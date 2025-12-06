@@ -810,7 +810,7 @@
             Proyek Sedang Berjalan (On Going)
         </h2>
         <p class="section-subtitle">
-            Pantau progres pembangunan kami. Berikut adalah deretan proyek yang sedang dalam tahap konstruksi dan pengembangan.<br>Klik Lainnya di bawah untuk melihat detail proses pembangunan.
+            Pantau progres pembangunan kami. **Klik gambar** di bawah untuk melihat detail dan tahap proses konstruksi proyek.
         </p>
 
         <div class="row g-4">
@@ -818,14 +818,16 @@
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-start mb-3">
                     <span class="ongoing-number">01</span>
-
                     <div class="ms-3">
-                        <h4 class="ongoing-title">Masjid di Daerah Cimanggis</h4>
+                        <h4 class="ongoing-title">Masjid di Daerah Cimanggis - Depok</h4>
                         <p class="text-muted mb-0 small">Progres: 80% (Hampir selesai)</p>
                     </div>
                 </div>
 
-                <div class="project-img-container shadow-sm mb-3">
+                <div class="project-img-container shadow-sm mb-3"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modal-cimanngis"
+                     style="cursor: pointer;"> 
                     <img src="img/mc2.jpg" class="img-fluid w-100" alt="Proyek Masjid">
                 </div>
             </div>
@@ -834,13 +836,16 @@
                 <div class="d-flex align-items-start mb-3">
                     <span class="ongoing-number">02</span>
                     <div class="ms-3">
-                        <h4 class="ongoing-title">Jalan Inspeksi Antarsari</h4>
-                        <p class="text-muted mb-0 small">Progres: 0% (belum/dalam persiapan)</p>
+                        <h4 class="ongoing-title">Jalan Inspeksi Antarsari - Cilandak</h4>
+                        <p class="text-muted mb-0 small">Progres: 35% (Pelebaran dan pengerasan)</p>
                     </div>
                 </div>
 
-                <div class="project-img-container shadow-sm mb-3">
-                    <img src="img/ongoing2.jpg" class="img-fluid w-100" alt="Proyek Ruko">
+                <div class="project-img-container shadow-sm mb-3"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modal-antarsari"
+                     style="cursor: pointer;">
+                    <img src="img/gambar1.jpg" class="img-fluid w-100" alt="Proyek Jalan">
                 </div>
             </div>
 
@@ -848,71 +853,189 @@
                 <div class="d-flex align-items-start mb-3">
                     <span class="ongoing-number">03</span>
                     <div class="ms-3">
-                        <h4 class="ongoing-title">Belum ada proyek</h4>
-                        <p class="text-muted mb-0 small">Progres: 0% (belum ada progres)</p>
+                        <h4 class="ongoing-title">Pembangunan Ruko 3 Lantai</h4>
+                        <p class="text-muted mb-0 small">Progres: 15% (Tahap pondasi)</p>
                     </div>
                 </div>
 
-                <div class="project-img-container shadow-sm mb-3">
-                    <img src="img/ongoing3.jpg" class="img-fluid w-100" alt="Proyek Gedung">
+                <div class="project-img-container shadow-sm mb-3"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modal-ruko"
+                     style="cursor: pointer;">
+                    <img src="img/ongoing3.jpg" class="img-fluid w-100" alt="Proyek Ruko">
                 </div>
             </div>
             
         </div>
-
-        <div class="collapse" id="moreOngoing">
-            <div class="row g-4 mt-2">
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex align-items-start mb-3">
-                        <span class="ongoing-number invisible">01</span>
-                        <div class="ms-3">
-                            <h5 class="text-muted fw-bold">Tahap Progres Lanjut<br>Mesjid Cimanggis</h5>
+        
+    </div>
+    
+    <div class="modal fade" id="modal-cimanngis" tabindex="-1" aria-labelledby="modalCimanngisLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCimanngisLabel">Tahap Pembangunan: Masjid Cimanngis</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                </div>
+                
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <h4 class="text-black mb-3">Detail Proyek & Progres</h4>
+                            <p><strong>Lokasi: <br> INDOMARET CIMANGGIS GOLF ESTATE</strong> Daerah Cimanngis, Depok</p>
+                            <p><strong>Status Progres:</strong> <span class="badge bg-warning text-dark fw-bold">80% - Tahap Finishing</span> Struktur Atap dan Pemasangan Ornamen Eksterior.</p>
+                            <p class="mt-3">Proyek pembangunan Masjid Cimanngis ini ditargetkan selesai dalam beberapa hari lagi. Fokus pekerjaan saat ini adalah memastikan kekuatan struktur kubah dan detail artistik fasad.</p>
+                            
+                            <hr class="my-4">
+                            
+                            <h5 class="mb-3">Dokumentasi Tahap Pembangunan</h5>
+                            
+                            <div class="row g-2">
+                                <div class="col-md-12">
+                                    <img src="img/mc3.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Progres Utama 80%">
+                                    <p class="text-muted small"></p>
+                                </div>
+                                <div class="col-6">
+                                    <img src="img/mc4.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Tahap Struktur Awal">
+                                    <p class="text-muted small"></p>
+                                </div>
+                                <div class="col-6">
+                                    <img src="img/mc5.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Tahap Struktur Dinding">
+                                    <p class="text-muted small"></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="project-img-container shadow-sm mb-3">
-                        <img src="img/mc3.jpg" class="img-fluid w-100" alt="Progres Pemasangan Atap">
-                    </div>
-
-                    <div class="project-img-container shadow-sm mb-3">
-                        <img src="img/mc4.jpg" class="img-fluid w-100" alt="Progres Dinding">
-                    </div>
-                    
-                    <div class="project-img-container shadow-sm mb-3">
-                        <img src="img/mc5.jpg" class="img-fluid w-100" alt="Progres Area Parkir">
+                        
+                        <div class="col-md-6">
+                            <h4 class="text-black mb-3">Lokasi Proyek</h4>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.717140889241!2d106.8778401!3d-6.4285817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6992d95267d30f%3A0xf65961d102e3b2e5!2sMasjid%20An%20Nahl!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <p class="mt-3 text-muted small text-center">Peta ini menunjukkan area proyek Masjid Cimanggis.</p>
+                        </div>
                     </div>
                 </div>
                 
-                </div>
-        </div>
-
-        <div class="text-center mt-5">
-            <button class="btn btn-link toggle-project-btn"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#moreOngoing"
-                aria-expanded="false"
-                aria-controls="moreOngoing"
-                id="toggleOngoingBtn">
-                <span class="toggle-text">Lainnya</span>
-                <i class="fas fa-chevron-down toggle-icon ms-2"></i>
-            </button>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="imageModalOngoing" tabindex="-1" aria-labelledby="imageModalOngoingLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content bg-transparent border-0">
-                <div class="modal-body text-center position-relative">
-                    <img id="modalImageOngoing" src="" class="img-fluid rounded shadow" alt="Detail Gambar">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
-        <button type="button" class="custom-close" data-bs-dismiss="modal" aria-label="Close">
-             <i class="fas fa-times"></i>
-        </button>
     </div>
+    
+    <div class="modal fade" id="modal-antarsari" tabindex="-1" aria-labelledby="modalAntarsariLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAntarsariLabel">Tahap Pembangunan: Jalan Inspeksi Antarsari - Cilandak</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <h4 class="text-dark mb-3">Detail Proyek & Progres</h4>
+                        <p><strong>Lokasi: Jl. Pangeran Antasari No.45</strong> Sepanjang area Jalan Inspeksi Antarsari, Jakarta Selatan</p>
+                        <p><strong>Status Progres:</strong> <span class="badge bg-warning text-dark fw-bold">35% - Tahap Struktur Dasar</span> Pekerjaan pelebaran, stabilisasi tanah, dan pengerasan dasar beton.</p>
+                        <p class="mt-3">Proyek ini bertujuan meningkatkan aksesibilitas dan daya dukung jalan di kawasan Antarsari. Kami memastikan kualitas material terbaik untuk daya tahan jangka panjang.</p>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="mb-3">Dokumentasi Tahap Pembangunan</h5>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-12">
+                                <img src="img/gambar2.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Progres Utama Jalan">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/gambar3.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Alat Berat">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/gambar4.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Persiapan Drainase">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/gambar5.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Persiapan Drainase">
+                                <p class="text-muted small"></p>
+                            </div>
+                            
+                            <div class="col-6">
+                                <img src="img/gamabr6.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Persiapan Drainase">
+                                <p class="text-muted small"></p>
+                            </div> 
+                            <div class="col-6">
+                                <img src="img/gamabr7.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Persiapan Drainase">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/gambar8.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Persiapan Drainase">
+                                <p class="text-muted small"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h4 class="text-dark mb-3">Lokasi Proyek</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0792036712395!2d106.7909289!3d-6.2543081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f10a8c27a3c3%3A0x600b467554f7380c!2sJalan%20Pangeran%20Antasari%2C%20Cilandak%20Barat!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p class="mt-3 text-muted small text-center">Peta ini menunjukkan area proyek Jalan Inspeksi Antarsari.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <div class="modal fade" id="modal-ruko" tabindex="-1" aria-labelledby="modalRukoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-white"> 
+                <h5 class="modal-title text-dark" id="modalRukoLabel">Tahap Pembangunan: BalaiRaja - Tanggerang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <h4 class="text-dark mb-3">Detail Proyek & Progres</h4>
+                        <p><strong>Lokasi:</strong> Kawasan Niaga Utama, Bekasi Timur</p>
+                        <p><strong>Status Progres:</strong> <span class="badge bg-warning text-dark fw-bold">15% - Tahap Pondasi</span> Penggalian, penancapan tiang pancang, dan pengerjaan sloof dasar.</p>
+                        <p class="mt-3">Proyek ruko komersial ini dirancang untuk memaksimalkan ruang dan efisiensi. Fokus utama saat ini adalah memastikan pondasi yang kuat untuk menopang struktur 3 lantai.</p>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="mb-3">Dokumentasi Tahap Pembangunan</h5>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-12">
+                                <img src="img/ongoing-ruko-1.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Progres Utama Ruko">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/ongoing-ruko-2.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Penggalian">
+                                <p class="text-muted small"></p>
+                            </div>
+                            <div class="col-6">
+                                <img src="img/ongoing-ruko-3.jpg" class="img-fluid rounded mb-2 shadow-sm" alt="Tiang Pancang">
+                                <p class="text-muted small"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h4 class="text-dark mb-3">Lokasi Proyek</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.191632009228!2d106.9859265!3d-6.2404097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c6913e618e7%3A0x6a0a09e072482705!2sBekasi%20Town%20Square%20(Betos)!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p class="mt-3 text-muted small text-center">Peta ini menunjukkan area proyek Ruko Komersil Bekasi Timur.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
 </section>
 
         <!-- Video Section -->
@@ -990,9 +1113,6 @@
             <p class="mt-4">
                 <a href="https://suarapancasila.id/pt-cipta-infra-optima-sukses-tangani-jalan-longsor-di-lebakini-kata-warga/" target="_blank" class="btn btn-primary me-2" style="background-color: #007bff; border-color: #007bff;">
                     <i class="fas fa-newspaper me-2"></i> Berita (Suara Pancasila)
-                </a>
-                <a href="https://www.rakyatbicara.id/perhubungan-transportasi/pt-cipta-infra-optima-sukses-tangani-jalan-longsor-di-lebak-banten/" target="_blank" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">
-                    <i class="fas fa-newspaper me-2"></i> Berita (Rakyat Bicara)
                 </a>
             </p>
             </div>
@@ -1515,7 +1635,7 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4>Telepon</h4>
-                                <p>(+62) 812-1115-5008</p>
+                                <p>(+62) 000-1111-2222</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1622,7 +1742,7 @@
                 <div class="footer-contact">
                     <h4>Kontak</h4>
                     <p><i class="fas fa-map-marker-alt"></i> Jl. Rawamangun Muka Timur No.38, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur.</p>
-                    <p><i class="fas fa-phone"></i> (+62) 812-1115-5008</p>
+                    <p><i class="fas fa-phone"></i> (+62) 111-2222-3333</p>
                     <p><i class="fas fa-envelope"></i> cipta.infra.optima@gmail.com</p>
                 </div>
             </div>
