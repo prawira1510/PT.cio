@@ -836,168 +836,439 @@ p,
 
 /* ===== PROJECTS SECTION ===== */
 
-/* 1. Gaya Layout Baru (Nomor & Judul di Atas Gambar) */
-.ongoing-number {
- font-family: 'Montserrat', sans-serif;
- font-size: 2.5rem;
- font-weight: 800;
- color: var(--bs-secondary);
- line-height: 0.9;
- min-width: 45px;
- margin-bottom: 10px; /* Jarak dari nomor ke judul */
+#ongoing-projects {
+    background: var(--bs-light);
+    padding: 80px 0;
 }
 
-.ongoing-title {
- font-family: 'Montserrat', sans-serif;
- font-size: 1.1rem;
- font-weight: 700; /* Bold */
- color: var(--bs-primary);
- margin-bottom: 15px; /* Jarak dari judul ke gambar */
- text-transform: uppercase;
+#ongoing-projects .section-title {
+    color: var(--bs-primary);
+    margin-bottom: 15px;
 }
 
-/* 2. Wadah Gambar Baru (Zoom & Rounded) */
-.project-img-container {
- border-radius: 10px;
- overflow: hidden;
- cursor: pointer;
- transition: transform 0.3s ease;
- background-color: #eee;
- height: 250px;
- margin-bottom: 20px; /* Jarak dari gambar ke konten di bawah */
+#ongoing-projects .section-subtitle {
+    color: var(--bs-accent);
+    margin-bottom: 50px;
+    max-width: 800px;
 }
 
-.project-img-container img {
- height: 100%;
- width: 100%;
- object-fit: cover;
- transition: transform 0.5s ease;
- display: block;
+/* Project Card Styling - Menggabungkan kedua gaya */
+.ongoing-project-card {
+    background: var(--bs-white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 30px;
+    padding: 25px; /* Menggunakan padding dari gaya kedua */
+    cursor: pointer;
 }
 
-.project-img-container:hover {
- transform: translateY(-5px);
+.ongoing-project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
-.project-img-container:hover img {
- transform: scale(1.05);
-}
-
-/* 3. Kartu Proyek Lama (Untuk yang Selesai) */
+/* Kartu Proyek Lama (Untuk yang Selesai) */
 .project-card-custom {
- border: none;
- border-radius: 12px;
- overflow: hidden;
- transition: all 0.3s ease;
- background: #fff;
- cursor: pointer;
- height: 100%;
- padding: 20px; /* Tambah padding dalam card */
- margin-bottom: 25px; /* Jarak antar card */
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: var(--bs-white);
+    cursor: pointer;
+    height: 100%;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-card);
 }
 
 .project-card-custom:hover {
- transform: translateY(-5px);
- box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Gambar Proyek Lama */
 .project-card-custom .project-img,
 .project-card-custom .card-img-top {
- height: 250px;
- object-fit: cover;
- transition: transform 0.5s ease;
- width: 100%;
- display: block;
- margin-bottom: 20px; /* Jarak dari gambar ke teks */
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .project-card-custom:hover .project-img,
 .project-card-custom:hover .card-img-top {
- transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .project-card-custom h5 {
- font-family: 'Montserrat', sans-serif;
- font-weight: 700; /* Bold */
- margin-bottom: 15px; /* Jarak judul ke deskripsi */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--bs-primary);
 }
 
 .project-card-custom p {
- font-family: 'Montserrat', sans-serif;
- font-weight: 500; /* Medium */
- margin-bottom: 15px; /* Jarak antar paragraf */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--bs-accent);
 }
 
-/* 4. Tombol Toggle Proyek (Lainnya/Tutup) - HITAM */
-.toggle-project-btn {
- font-family: 'Montserrat', sans-serif;
- text-decoration: none;
- font-weight: 600;
- color: var(--bs-primary);
- font-size: 1.1rem;
- display: inline-flex;
- align-items: center;
- background: transparent;
- border: none;
- margin-top: 20px; /* Jarak dari konten di atas */
- padding: 10px 15px; /* Padding untuk tombol */
+/* 1. Gaya Layout Baru (Nomor & Judul di Atas Gambar) */
+.ongoing-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem; /* Diperbesar dari 2.5rem */
+    font-weight: 900; /* Diubah dari 800 ke 900 */
+    color: var(--bs-secondary);
+    line-height: 1;
+    min-width: 50px; /* Diperbesar dari 45px */
+    display: inline-block;
+    margin-bottom: 5px; /* Dikurangi dari 10px */
 }
 
-.toggle-project-btn:hover {
- color: var(--bs-secondary);
- text-decoration: none;
+.ongoing-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Diperbesar dari 1.1rem */
+    font-weight: 700;
+    color: var(--bs-primary);
+    margin-bottom: 10px; /* Dikurangi dari 15px */
+    text-transform: uppercase;
+    line-height: 1.3;
 }
 
-.toggle-icon {
- transition: transform 0.3s ease;
- margin-left: 8px;
+.progress-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--bs-accent);
 }
 
-/* Rotasi ikon panah saat tombol diklik */
-.toggle-project-btn[aria-expanded="true"] .toggle-icon {
- transform: rotate(180deg);
+/* 2. Wadah Gambar Baru (Zoom & Rounded) */
+.project-img-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #eee;
+    height: 250px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-card);
 }
 
-/* 5. Modal & Close Button Styles */
-.modal-body {
- min-height: 100%;
- padding: 0;
- position: relative;
+.project-img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
 }
 
-.custom-close {
- position: absolute;
- top: 20px; /* Jarak dari atas */
- right: 20px; /* Jarak dari kanan */
- background: rgba(0, 0, 0, 0.4);
- border: 2px solid #fff;
- color: #fff;
- border-radius: 50%;
- width: 40px;
- height: 40px;
- font-size: 20px;
- display: flex;
- align-items: center;
- justify-content: center;
- cursor: pointer;
- transition: all 0.3s;
- z-index: 1060;
- padding: 0;
+.project-img-container:hover {
+    transform: translateY(-5px);
 }
 
-.custom-close:hover {
- background: var(--bs-primary);
- color: var(--bs-white);
- transform: rotate(90deg);
+.project-img-container:hover img {
+    transform: scale(1.05);
+}
+
+/* View Detail Badge - Digabungkan dengan badge yang ada */
+.project-img-container .view-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    border: none;
 }
 
 /* Badge Proyek */
 .badge.bg-warning {
- font-family: 'Montserrat', sans-serif;
- font-weight: 600;
- background-color: var(--bs-secondary) !important;
- color: var(--bs-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    background-color: var(--bs-secondary) !important;
+    color: var(--bs-dark) !important;
+    border: none;
+}
+
+/* Button Styling - Menggabungkan kedua gaya */
+.btn-view-progress {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 20px;
+    border: 2px solid var(--bs-primary);
+    background: transparent;
+    color: var(--bs-primary);
+    transition: var(--transition);
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.btn-view-progress:hover {
+    background: var(--bs-primary);
+    color: var(--bs-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Tombol Toggle Proyek (Lainnya/Tutup) */
+.toggle-project-btn {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--bs-primary);
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    margin-top: 30px;
+    padding: 10px 20px;
+    transition: var(--transition);
+}
+
+.toggle-project-btn:hover {
+    color: var(--bs-secondary);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    margin-left: 8px;
+}
+
+/* Rotasi ikon panah saat tombol diklik */
+.toggle-project-btn[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* ===== MODAL STYLING ===== */
+.project-modal .modal-header {
+    background: var(--bs-primary);
+    color: var(--bs-white);
+    border-bottom: 3px solid var(--bs-secondary);
+}
+
+.project-modal .modal-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.project-modal .modal-body {
+    padding: 30px;
+}
+
+/* 5. Modal & Close Button Styles */
+.modal-body {
+    min-height: 100%;
+    padding: 30px;
+    position: relative;
+}
+
+.custom-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 1060;
+    padding: 0;
+}
+
+.custom-close:hover {
+    background: var(--bs-primary);
+    color: var(--bs-white);
+    transform: rotate(90deg);
+}
+
+/* Gallery Grid */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Map Container */
+.map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 20px;
+}
+
+.map-container iframe {
+    display: block;
+    border: none;
+    width: 100%;
+    height: 450px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 991.98px) {
+    #ongoing-projects {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #ongoing-projects {
+        padding: 60px 0;
+    }
+    
+    .ongoing-number {
+        font-size: 2.2rem;
+        min-width: 40px;
+    }
+    
+    .ongoing-title {
+        font-size: 1.1rem;
+    }
+    
+    .project-img-container,
+    .project-card-custom .project-img,
+    .project-card-custom .card-img-top {
+        height: 200px;
+    }
+    
+    .project-modal .modal-body,
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .project-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .project-gallery img {
+        height: 100px;
+    }
+    
+    .map-container iframe {
+        height: 350px;
+    }
+    
+    .ongoing-project-card,
+    .project-card-custom {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    #ongoing-projects {
+        padding: 50px 15px;
+    }
+    
+    .ongoing-number {
+        font-size: 2rem;
+        min-width: 35px;
+    }
+    
+    .ongoing-title {
+        font-size: 1rem;
+    }
+    
+    .project-img-container,
+    .project-card-custom .project-img,
+    .project-card-custom .card-img-top {
+        height: 180px;
+    }
+    
+    .btn-view-progress {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .toggle-project-btn {
+        font-size: 1rem;
+        padding: 8px 15px;
+        margin-top: 20px;
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
+    
+    .ongoing-project-card,
+    .project-card-custom {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation for project cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ongoing-project-card,
+.project-card-custom {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Delay animations for each card */
+.ongoing-project-card:nth-child(1),
+.project-card-custom:nth-child(1) { 
+    animation-delay: 0.1s; 
+}
+
+.ongoing-project-card:nth-child(2),
+.project-card-custom:nth-child(2) { 
+    animation-delay: 0.2s; 
+}
+
+.ongoing-project-card:nth-child(3),
+.project-card-custom:nth-child(3) { 
+    animation-delay: 0.3s; 
 }
 
 /* ===== GALLERY PERUMAHAN & MARKETING GALLERY ===== */
