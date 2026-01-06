@@ -116,7 +116,6 @@ section {
 /* Text body dengan font-weight Medium (500) */
 body, 
 p,
-.hero-description,
 .service-card p,
 .timeline-content p,
 .client-card p,
@@ -232,107 +231,235 @@ p,
  color: var(--bs-primary) !important;
 }
 
-/* ===== HERO CAROUSEL ===== */
+/* ===== HERO CAROUSEL STYLING (DIPERBAIKI) ===== */
 
 .hero-carousel {
- height: 110vh;
- margin-bottom: 0 !important;
- padding: 0; /* Hapus padding default */
+    height: 100vh;
+    margin-bottom: 0 !important;
+    padding: 0;
 }
 
 .hero-carousel .carousel-item {
- height: 100%;
+    height: 100%;
 }
 
 .hero-carousel .carousel-item img {
- height: 100%;
- object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-/* Kontainer untuk teks dan tombol di Hero */
+/* Overlay untuk keterbacaan teks */
+.hero-carousel .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+}
+
+.hero-carousel .carousel-caption {
+    z-index: 2;
+}
+
+/* ===== POSISI CAPTION DAN TEKS HERO YANG DITURUNKAN ===== */
+
+/* Posisi caption di bawah */
+.carousel-caption {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+    top: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0;
+}
+
+/* Konten hero diturunkan (PAS VISUAL) */
 .hero-content {
- background: rgba(0, 0, 0, 0.4);
- display: flex;
- flex-direction: column;
- justify-content: center;
- text-align: center; 
- align-items: center;
- width: 100%;
- height: 100%;
- padding: 20px 5%; /* Padding dari semua sisi */
+    margin-bottom: 140px; /* posisi ideal desktop */
+    width: 100%;
 }
 
-/* Hero Typography dengan Montserrat */
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .hero-content {
+        margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content {
+        margin-bottom: 70px;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-content {
+        margin-bottom: 50px;
+    }
+}
+
+/* ===== TYPOGRAPHY HERO (UKURAN MODERAT - DIKECILKAN) ===== */
+
 .hero-title {
- font-family: 'Montserrat', sans-serif;
- font-size: 3.5rem;
- font-weight: 900; /* Black */
- text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
- color: var(--bs-white);
- margin-bottom: 20px; /* Jarak antar elemen */
- line-height: 1.1;
- text-align: center;
- max-width: 800px;
- padding: 0 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; /* Black */
+    color: var(--bs-white);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    line-height: 1.1;
+    text-align: left;
+    margin-bottom: 1rem;
+    max-width: 700px;
+    padding-left: 0;
+    transform: none;
 }
 
-.hero-subtitle {
- font-family: 'Montserrat', sans-serif;
- font-size: 1.8rem;
- font-weight: 700; /* Bold */
- text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
- color: var(--bs-white);
- margin-bottom: 25px; /* Jarak antar elemen */
- line-height: 1.3;
- text-align: center;
- max-width: 800px;
- padding: 0 15px;
+/* Ukuran font untuk desktop/laptop (≥ 1200px) - MODERAT */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 2.8rem; /* Sedang antara besar dan kecil */
+        max-width: 800px;
+    }
 }
 
-.hero-description {
- font-family: 'Montserrat', sans-serif;
- font-size: 1.25rem;
- font-weight: 500; /* Medium */
- color: var(--bs-white);
- text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
- margin-bottom: 30px; /* Jarak antar elemen */
- max-width: 700px;
- line-height: 1.6;
- text-align: center;
- padding: 0 15px;
+/* Ukuran font untuk laptop kecil (992px - 1199px) - MODERAT */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hero-title {
+        font-size: 2.4rem; /* Sedang antara besar dan kecil */
+        max-width: 700px;
+    }
 }
 
-.hero-buttons {
- gap: 20px;
- display: flex;
- justify-content: center;
- align-self: center;
- margin-top: 20px; /* Jarak dari deskripsi */
+/* Ukuran font untuk tablet landscape (768px - 991px) - MODERAT */
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero-title {
+        font-size: 2rem; /* Sedang antara besar dan kecil */
+        max-width: 600px;
+    }
 }
 
-/* Carousel Controls & Indicators */
+/* Ukuran font untuk tablet portrait (576px - 767px) - MODERAT */
+@media (min-width: 576px) and (max-width: 767px) {
+    .hero-title {
+        font-size: 1.7rem; /* Sedang antara besar dan kecil */
+        max-width: 85%;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Ukuran font untuk mobile (≤ 575px) - MODERAT */
+@media (max-width: 575px) {
+    .hero-title {
+        font-size: 1.4rem; /* Sedang antara besar dan kecil */
+        max-width: 90%;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+}
+
+/* Ukuran font untuk mobile sangat kecil (≤ 375px) - MODERAT */
+@media (max-width: 375px) {
+    .hero-title {
+        font-size: 1.2rem; /* Sedang antara besar dan kecil */
+        max-width: 95%;
+    }
+}
+
+/* ===== CAROUSEL CONTROLS ===== */
+
 .carousel-control-prev,
 .carousel-control-next {
- display: none;
+    display: none;
 }
 
 .carousel-indicators {
- display: none;
+    display: none;
 }
 
-.carousel-caption {
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- width: 100%;
- height: 100%;
- padding: 20px; /* Padding di carousel caption */
- display: flex;
- align-items: center;
- justify-content: center;
- text-align: center;
+/* Animasi untuk teks hero */
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -30px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS HERO ===== */
+
+/* Penyesuaian tinggi carousel untuk tablet */
+@media (max-width: 991px) {
+    .hero-carousel {
+        height: 85vh;
+    }
+}
+
+/* Penyesuaian tinggi carousel untuk mobile */
+@media (max-width: 768px) {
+    .hero-carousel {
+        height: 80vh;
+    }
+    
+    /* Pastikan gambar tetap proporsional */
+    .hero-carousel .carousel-item img {
+        object-position: center center;
+    }
+}
+
+/* Penyesuaian untuk mobile sangat kecil */
+@media (max-width: 575px) {
+    .hero-carousel {
+        height: 75vh;
+    }
+    
+    /* Tambah padding kanan untuk teks di mobile */
+    .carousel-caption {
+        left: 5%;
+        right: 5%;
+    }
+}
+
+/* Penyesuaian khusus untuk teks yang panjang */
+.hero-title br {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .hero-title br {
+        display: none;
+    }
+    
+    .hero-title br.d-none.d-md-block {
+        display: block !important;
+    }
+}
+
+/* HAPUS STYLING HERO LAMA YANG BERTENTANGAN */
+.hero-subtitle,
+.hero-description,
+.hero-buttons {
+    display: none !important;
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -1170,31 +1297,13 @@ p,
 }
 
 /* ==========================================================================
-MEDIA QUERIES (RESPONSIVE)
+MEDIA QUERIES (RESPONSIVE) - DIPERBARUI
 ========================================================================== */
 
 @media (min-width: 992px) {
  /* DESKTOP */
- .hero-title {
-  font-size: 4.5rem;
- }
-
- .hero-subtitle {
-  font-size: 2.2rem;
- }
-
- .hero-description {
-  font-size: 1.4rem;
-  max-width: 800px;
- }
-
  .hero-carousel {
   height: 100vh;
- }
-
- .hero-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
  }
  
  /* Padding untuk container desktop */
@@ -1267,19 +1376,6 @@ MEDIA QUERIES (RESPONSIVE)
   background-color: rgba(var(--bs-primary-rgb, 18, 18, 18), 0.1);
   color: var(--bs-primary) !important;
  }
-
- .hero-title {
-  font-size: 2.5rem;
- }
-
- .hero-subtitle {
-  font-size: 1.5rem;
- }
-
- .hero-description {
-  font-size: 1.1rem;
-  max-width: 90%;
- }
 }
 
 @media (max-width: 768px) {
@@ -1299,10 +1395,6 @@ MEDIA QUERIES (RESPONSIVE)
   padding-left: 10px !important;
  }
 
- .hero-carousel {
-  height: 80vh;
- }
-
  .section-title {
   font-size: 2rem;
   padding-top: 15px;
@@ -1311,19 +1403,6 @@ MEDIA QUERIES (RESPONSIVE)
 
  .section-title::after {
   margin: 10px auto 15px;
- }
-
- .hero-buttons {
-  gap: 15px;
-  flex-direction: column;
-  width: 100%;
-  align-items: center !important;
- }
-
- .hero-buttons .btn {
-  width: 80%;
-  max-width: 300px;
-  margin: 5px 0; /* Jarak antar tombol vertikal */
  }
 
  .about-item {
@@ -1342,23 +1421,6 @@ MEDIA QUERIES (RESPONSIVE)
 
  #dokumentasiCarousel .carousel-item img {
   max-width: 90%;
- }
-
- .hero-title {
-  font-size: 2rem;
-  text-align: center !important;
-  margin-bottom: 15px;
- }
-
- .hero-subtitle {
-  font-size: 1.2rem;
-  text-align: center !important;
-  margin-bottom: 20px;
- }
- 
- .hero-description {
-  text-align: center !important;
-  margin-bottom: 25px;
  }
 
  /* Timeline Mobile */
@@ -1429,6 +1491,11 @@ MEDIA QUERIES (RESPONSIVE)
 }
 
 @media (max-width: 576px) {
+ /* MOBILE KECIL */
+  section {
+    padding: 40px 10px; /* Padding section mobile kecil */
+  }
+
  .section-title {
   font-size: 1.8rem;
   padding-top: 10px;
@@ -1445,61 +1512,7 @@ MEDIA QUERIES (RESPONSIVE)
   font-size: 1rem;
   margin-bottom: 30px;
   padding: 0 10px;
- }
-
- .hero-carousel {
-  height: 85vh;
-  margin-bottom: 0 !important;
- }
-
- .hero-content {
-  padding-top: 0;
-  padding-left: 5%;
-  padding-right: 5%;
- }
-
- .hero-title {
-  font-size: 1.8rem;
-  line-height: 1.1;
-  margin-bottom: 15px;
-  text-align: center !important;
-  padding: 0 10px;
- }
-
- .hero-subtitle {
-  font-size: 0.95rem;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  display: block !important;
-  text-align: center !important;
-  padding: 0 10px;
- }
-
- .hero-description {
-  display: block !important;
-  font-size: 1rem;
-  line-height: 1.4;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center !important;
-  padding: 0 10px;
- }
-
- .hero-buttons {
-  flex-direction: column;
-  align-items: center !important;
-  width: 100%;
-  margin-top: 25px;
- }
-
- .hero-buttons .btn {
-  width: 90%;
-  max-width: 280px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  margin: 8px 0;
- }
+   }
 
  .about-section {
   padding-top: 40px !important;
