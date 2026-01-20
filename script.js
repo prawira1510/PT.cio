@@ -1,312 +1,356 @@
-// JavaScript untuk PT Cipta Infra Optima Website
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeWebsite();
+// Improved Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            // Update active nav link
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
+        }
+    });
 });
 
-function initializeWebsite() {
-    // 1. Efek Navbar scroll
-    setupNavbarScrollEffect();
+// Navbar scroll effect
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
 
-    // 2. Smooth scrolling untuk navigation links
-    setupSmoothScrolling();
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // 3. Active navigation link highlighting
-    setupActiveNavHighlighting();
-
-    // 4. Mengatur fungsi toggle panah Klien & Mitra
-    setupPartnerToggleButton();
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up
+        navbar.style.transform = 'translateY(0)';
+    }
     
-    // 5. Mengatur tombol Proyek secara generik (Panah putar)
-    setupGenericProjectToggle();
-
-    // 6. Initialize carousels
-    initializeCarousels();
-
-    // 7. Set up image error handling
-    setupImageErrorHandling();
+    // Add shadow on scroll
+    if (scrollTop > 50) {
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+    } else {
+        navbar.style.boxShadow = 'none';
+        navbar.style.background = 'white';
+        navbar.style.backdropFilter = 'none';
+    }
     
-    // 8. SETUP FUNGSI MODAL DETAIL PROYEK BARU
-    setupProjectModalTrigger(); 
+    lastScrollTop = scrollTop;
+});
+
+// Portfolio gallery hover effect
+const imageCards = document.querySelectorAll('.image-card');
+imageCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.zIndex = '10';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.zIndex = '1';
+    });
+});
+
+// Image modal functionality
+const projectImages = document.querySelectorAll('.project-img');
+const modalImage = document.getElementById('modalImage');
+const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+projectImages.forEach(img => {
+    img.addEventListener('click', function() {
+        modalImage.src = this.src;
+        modalImage.alt = this.alt;
+        imageModal.show();
+    });
+});
+
+// Contact form handling
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: this.querySelector('input[type="text"]').value,
+            email: this.querySelector('input[type="email"]').value,
+            phone: this.querySelector('input[type="tel"]').value,
+            service: this.querySelector('select').value,
+            message: this.querySelector('textarea').value
+        };
+        
+        // Simple validation
+        if (!formData.name || !formData.email || !formData.message) {
+            alert('Mohon lengkapi semua field yang wajib diisi!');
+            return;
+        }
+        
+        // Here you would normally send the data to a server
+        console.log('Form data:', formData);
+        
+        // Show success message
+        alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.');
+        
+        // Reset form
+        this.reset();
+    });
 }
 
-/**
- * Mengatur efek scroll pada navbar.
- */
-function setupNavbarScrollEffect() {
-    const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
+// Toggle project buttons
+const toggleProjectBtn = document.getElementById('toggleProjectBtn');
+const toggleSelesaiBtn = document.getElementById('toggleSelesaiBtn');
 
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+if (toggleProjectBtn) {
+    toggleProjectBtn.addEventListener('click', function() {
+        const icon = this.querySelector('.toggle-icon');
+        const btnText = this.querySelector('#btnText');
+        
+        if (this.getAttribute('aria-expanded') === 'true') {
+            btnText.textContent = 'Lihat Proyek Lainnya';
         } else {
-            navbar.classList.remove('scrolled');
+            btnText.textContent = 'Tutup';
         }
     });
 }
 
-/**
- * Mengatur smooth scrolling untuk tautan navigasi.
- */
-function setupSmoothScrolling() {
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            
-            // Skip jika targetnya adalah dropdown atau link kosong
-            if (this.classList.contains('dropdown-toggle') || !targetId || targetId === '#') return;
-            
-            // Cek apakah ini tautan internal yang menunjuk ke section
-            if (targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navbarHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Tutup menu mobile setelah mengklik tautan
-                    const navbarCollapse = document.querySelector('.navbar-collapse');
-                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                        // Memanggil fungsi Bootstrap Collapse secara efisien
-                        if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
-                            const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
-                            bsCollapse.hide();
-                        }
-                    }
-                }
-            }
-        });
-    });
-}
-
-/**
- * Menyoroti tautan navigasi aktif berdasarkan posisi scroll.
- */
-function setupActiveNavHighlighting() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    
-    function highlightActiveNav() {
-        let currentSection = '';
-        // Offset sedikit lebih besar (misalnya 120px) untuk memastikan bagian tersebut terlihat di bawah navbar
-        const scrollPosition = window.pageYOffset + 120; 
+if (toggleSelesaiBtn) {
+    toggleSelesaiBtn.addEventListener('click', function() {
+        const toggleText = this.querySelector('.toggle-text');
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href && href === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    // Initial highlight and on scroll
-    highlightActiveNav();
-    window.addEventListener('scroll', highlightActiveNav);
-}
-
-/**
- * Mengatur perubahan ikon panah pada tombol Klien & Mitra.
- */
-function setupPartnerToggleButton() {
-    const collapseElement = document.getElementById('morePartners');
-    const toggleButton = document.getElementById('partnerToggleButton');
-
-    if (collapseElement && toggleButton) {
-        
-        // Saat collapse mulai terlihat (show.bs.collapse)
-        collapseElement.addEventListener('show.bs.collapse', function () {
-            const icon = toggleButton.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            }
-        });
-
-        // Saat collapse mulai tersembunyi (hide.bs.collapse)
-        collapseElement.addEventListener('hide.bs.collapse', function () {
-            const icon = toggleButton.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-        });
-    }
-}
-
-/**
- * MENGATUR TOMBOL PROYEK SECARA GENERIK
- * Mengelola semua tombol dengan class .toggle-project-btn dan memutar ikonnya
- * secara INDEPENDEN menggunakan CSS Transform.
- */
-function setupGenericProjectToggle() {
-    const toggleButtons = document.querySelectorAll('.toggle-project-btn');
-
-    toggleButtons.forEach(button => {
-        const targetSelector = button.getAttribute('href') || button.getAttribute('data-bs-target');
-        const targetElement = document.querySelector(targetSelector);
-        
-        if (targetElement) {
-            const icon = button.querySelector('.toggle-icon');
-
-            // Saat collapse ditampilkan (konten terbuka)
-            targetElement.addEventListener('show.bs.collapse', function () {
-                if (icon) {
-                    // Panah ke ATAS
-                    icon.style.transform = 'rotate(180deg)';
-                }
-                
-                // Opsional: ganti teks tombol dari "Lihat Proyek Lainnya" menjadi "Sembunyikan Proyek"
-                const btnText = button.querySelector('#btnText');
-                if (btnText) {
-                    btnText.textContent = 'Sembunyikan Proyek';
-                }
-            });
-
-            // Saat collapse disembunyikan (konten tertutup)
-            targetElement.addEventListener('hide.bs.collapse', function () {
-                if (icon) {
-                    // Panah ke BAWAH (kembali ke normal)
-                    icon.style.transform = 'rotate(0deg)'; 
-                }
-                 // Opsional: ganti teks tombol kembali
-                const btnText = button.querySelector('#btnText');
-                if (btnText) {
-                    btnText.textContent = 'Lihat Proyek Lainnya';
-                }
-            });
-
-            // Tambahkan CSS transisi langsung via JavaScript untuk memastikan terload
-            if (icon) {
-                 icon.style.transition = 'transform 0.3s ease';
-            }
+        if (this.getAttribute('aria-expanded') === 'true') {
+            toggleText.textContent = 'Lainnya';
+        } else {
+            toggleText.textContent = 'Tutup';
         }
     });
 }
 
-
-/**
- * Menginisialisasi semua carousel Bootstrap.
- */
-function initializeCarousels() {
-    // Pastikan objek 'bootstrap' tersedia
-    if (typeof bootstrap === 'undefined' || !bootstrap.Carousel) return;
-    
-    // Hero carousel
-    const heroCarousel = document.getElementById('heroCarousel');
-    if (heroCarousel) {
-        new bootstrap.Carousel(heroCarousel, {
-            interval: 5000,
-            wrap: true,
-            pause: 'hover',
-            touch: true,
-            keyboard: true
-        });
-    }
-    
-    // Documentation carousel
-    const dokumentasiCarousel = document.getElementById('dokumentasiCarousel');
-    if (dokumentasiCarousel) {
-        new bootstrap.Carousel(dokumentasiCarousel, {
-            interval: 4000,
-            wrap: true,
-            pause: 'hover'
-        });
-    }
-}
-
-/**
- * Menangani gambar yang gagal dimuat (error).
- */
-function setupImageErrorHandling() {
-    // Add error handling for all images
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', function() {
-            console.warn('Gambar gagal dimuat:', this.src);
-            this.alt = 'Gambar tidak tersedia';
-            // Tambahkan fallback styling
-            this.style.backgroundColor = '#f8f9fa';
-            this.style.padding = '20px';
-            this.style.display = 'block'; 
-            this.style.color = '#6c757d';
-            this.style.fontStyle = 'italic';
-            this.style.textAlign = 'center';
-            this.style.lineHeight = '1.5';
-            this.style.height = 'auto'; 
-        });
+// Partner toggle button
+const partnerToggleButton = document.getElementById('partnerToggleButton');
+if (partnerToggleButton) {
+    partnerToggleButton.addEventListener('click', function() {
+        const icon = this.querySelector('i');
+        if (this.getAttribute('aria-expanded') === 'true') {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        } else {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        }
     });
 }
 
-/**
- * MENGATUR MODAL DETAIL PROYEK
- * Mengatur semua kartu proyek dengan kelas '.modal-trigger' agar dapat 
- * diklik dan menampilkan detail proyek di modal tunggal.
- */
-function setupProjectModalTrigger() {
-    // 1. Ambil elemen-elemen modal
-    const detailModal = document.getElementById('projectDetailModal');
-    if (!detailModal) return;
+// Enhanced carousel auto-play with pause on hover
+const carousels = document.querySelectorAll('.carousel');
+carousels.forEach(carousel => {
+    const carouselInstance = new bootstrap.Carousel(carousel);
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', () => {
+        carouselInstance.pause();
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        carouselInstance.cycle();
+    });
+});
 
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalLocation = document.getElementById('modalLocation');
+// Parallax effect for hero section
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (heroSection) {
+        const heroContent = heroSection.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
+        }
+    }
+});
 
-    // 2. Tambahkan event listener untuk semua kartu proyek yang memiliki kelas 'modal-trigger'
-    document.querySelectorAll('.project-card-custom.modal-trigger').forEach(card => {
-        
-        // Atur kursor menjadi pointer untuk indikasi klik
-        card.style.cursor = 'pointer';
+// Lazy loading for images
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+        }
+    });
+}, {
+    rootMargin: '50px 0px',
+    threshold: 0.1
+});
 
-        card.addEventListener('click', function() {
-            // Ambil data dari data attributes kartu yang diklik
-            const imgSrc = this.getAttribute('data-img-src');
-            const projectTitle = this.getAttribute('data-project-title');
-            const projectLocation = this.getAttribute('data-project-location');
-            
-            // Perbarui konten modal
-            modalImage.src = imgSrc;
-            modalImage.alt = projectTitle; // Alt text yang bagus
-            modalTitle.textContent = projectTitle;
-            modalLocation.textContent = projectLocation;
-            
-            // Tambahkan transisi visual saat gambar dimuat di modal (opsional)
-            modalImage.style.opacity = 0;
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// Service cards animation on scroll
+const serviceCards = document.querySelectorAll('.service-card');
+const cardObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
             setTimeout(() => {
-                modalImage.style.opacity = 1;
-                modalImage.style.transition = 'opacity 0.2s ease-in-out';
-            }, 50);
-        });
+                entry.target.classList.add('fade-in');
+            }, index * 100);
+            observer.unobserve(entry.target);
+        }
     });
+}, {
+    threshold: 0.1
+});
+
+serviceCards.forEach(card => cardObserver.observe(card));
+
+// Active nav link based on scroll position
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+window.addEventListener('scroll', function() {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        
+        if (scrollY >= (sectionTop - navbarHeight - 100)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Video play on hover
+const videos = document.querySelectorAll('video');
+videos.forEach(video => {
+    video.addEventListener('mouseenter', function() {
+        this.play().catch(e => console.log('Autoplay prevented:', e));
+    });
+    
+    video.addEventListener('mouseleave', function() {
+        this.pause();
+        this.currentTime = 0;
+    });
+});
+
+// Counter animation for statistics (if needed)
+function animateCounter(element, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target + '+';
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(start) + '+';
+        }
+    }, 16);
 }
 
+// Initialize counters if they exist
+const counters = document.querySelectorAll('.counter');
+if (counters.length > 0) {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.target);
+                animateCounter(entry.target, target, 2000);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
+}
 
-// Tambahkan kelas 'loaded' ke body saat halaman selesai dimuat sepenuhnya (untuk preloader/animasi inisial)
+// Back to top button
+const backToTop = document.createElement('button');
+backToTop.innerHTML = '<i class="fas fa-chevron-up"></i>';
+backToTop.className = 'btn btn-primary back-to-top';
+backToTop.style.position = 'fixed';
+backToTop.style.bottom = '30px';
+backToTop.style.right = '30px';
+backToTop.style.zIndex = '1000';
+backToTop.style.display = 'none';
+backToTop.style.width = '50px';
+backToTop.style.height = '50px';
+backToTop.style.borderRadius = '50%';
+backToTop.style.fontSize = '1.2rem';
+backToTop.style.boxShadow = '0 5px 15px rgba(0, 123, 255, 0.3)';
+
+document.body.appendChild(backToTop);
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTop.style.display = 'flex';
+        backToTop.style.alignItems = 'center';
+        backToTop.style.justifyContent = 'center';
+    } else {
+        backToTop.style.display = 'none';
+    }
+});
+
+// Preloader (optional)
 window.addEventListener('load', function() {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+    
+    // Add loaded class to body for transition effects
     document.body.classList.add('loaded');
 });
 
-  document.querySelectorAll('.project-img').forEach(img => {
-    img.addEventListener('click', function () {
-      const modalImg = document.getElementById('modalImage');
-      modalImg.src = this.src;
-      const myModal = new bootstrap.Modal(document.getElementById('imageModal'));
-      myModal.show();
-    });
-  });
+// Add preloader HTML if needed
+const preloaderHTML = `
+<div class="preloader" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+`;
+
+document.body.insertAdjacentHTML('afterbegin', preloaderHTML);
