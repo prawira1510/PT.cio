@@ -1,13 +1,18 @@
-/* ===== GLOBAL STYLES ===== */
+/* ===== GLOBAL STYLES - WARNA HIJAU PT CIO ===== */
 :root {
-    --primary-color: #007bff;
+    --primary-color: #28a745;           /* Hijau utama */
+    --primary-dark: #218838;            /* Hijau lebih gelap */
+    --primary-light: #34ce57;           /* Hijau lebih terang */
     --secondary-color: #6c757d;
     --dark-color: #343a40;
     --light-color: #f8f9fa;
-    --success-color: #28a745;
+    --success-color: #198754;           /* Hijau sukses */
     --danger-color: #dc3545;
     --warning-color: #ffc107;
-    --info-color: #17a2b8;
+    --info-color: #20c997;              /* Hijau info */
+    --hijau-cio: #28a745;               /* Warna khusus PT CIO */
+    --biru-about: #3498db;              /* Warna biru untuk section about */
+    --kuning-about: #f1c40f;            /* Warna kuning untuk about */
 }
 
 * {
@@ -28,10 +33,12 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== IMPROVED NAVBAR ===== */
+/* ===== IMPROVED NAVBAR - HIJAU ===== */
 .navbar {
     transition: all 0.3s ease;
     padding: 0.5rem 0;
+    background: white !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand .logo {
@@ -53,7 +60,7 @@ body {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: var(--primary-color) !important;
+    color: var(--hijau-cio) !important;
     transform: translateY(-2px);
 }
 
@@ -62,7 +69,7 @@ body {
     position: absolute;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: var(--hijau-cio);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -81,6 +88,7 @@ body {
     border-radius: 10px;
     padding: 0.5rem 0;
     animation: fadeIn 0.3s ease;
+    border-top: 3px solid var(--hijau-cio);
 }
 
 .navbar-nav .dropdown-item {
@@ -89,7 +97,7 @@ body {
 }
 
 .navbar-nav .dropdown-item:hover {
-    background-color: var(--primary-color);
+    background-color: var(--hijau-cio);
     color: white;
     transform: translateX(5px);
 }
@@ -105,7 +113,7 @@ body {
     }
 }
 
-/* ===== IMPROVED HERO SECTION - NO BLACK BOX ===== */
+/* ===== IMPROVED HERO SECTION ===== */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -147,14 +155,15 @@ body {
 }
 
 .hero-content {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
     padding: 3rem;
     border-radius: 15px;
     max-width: 700px;
     margin: 0;
     text-align: left;
-    border-left: 5px solid var(--primary-color);
+    border-left: 5px solid var(--hijau-cio);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
@@ -178,13 +187,14 @@ body {
 .carousel-control-next {
     width: 70px;
     height: 70px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(40, 167, 69, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0;
+    opacity: 0.7;
     transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero-section:hover .carousel-control-prev,
@@ -202,8 +212,9 @@ body {
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(40, 167, 69, 0.4);
     transform: translateY(-50%) scale(1.1);
+    border-color: var(--hijau-cio);
 }
 
 /* ===== SECTION STYLES ===== */
@@ -228,7 +239,7 @@ section {
     position: absolute;
     width: 60px;
     height: 4px;
-    background: var(--primary-color);
+    background: var(--hijau-cio);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -246,47 +257,11 @@ section {
 }
 
 /* ===== JUDUL YANG HARUS DI TENGAH ===== */
-/* 1. Video PT CIPTA INFRA OPTIMA */
-#video .section-title {
-    text-align: center !important;
-}
-
-#video .section-subtitle {
-    text-align: center !important;
-}
-
-/* 2. Proyek Sedang Berjalan (On Going) */
-#ongoing-projects .section-title {
-    text-align: center !important;
-}
-
-#ongoing-projects .section-subtitle {
-    text-align: center !important;
-}
-
-/* 3. Proyek yang sudah selesai dibangun */
-#projects .section-title {
-    text-align: center !important;
-}
-
-#projects .section-subtitle {
-    text-align: center !important;
-}
-
-/* 4. Pengalaman Proyek Kami */
-#projects .projects-section .section-title {
-    text-align: center !important;
-}
-
-#projects .projects-section .section-subtitle {
-    text-align: center !important;
-}
-
-/* Force center alignment for all main titles */
 .video-section .section-title,
 .ongoing-projects .section-title,
 .clear-section .section-title,
-.projects-section .section-title {
+.projects-section .section-title,
+#documentation .section-title {
     text-align: center !important;
     display: block !important;
     width: 100% !important;
@@ -295,8 +270,265 @@ section {
 .video-section .section-subtitle,
 .ongoing-projects .section-subtitle,
 .clear-section .section-subtitle,
-.projects-section .section-subtitle {
+.projects-section .section-subtitle,
+#documentation .section-subtitle {
     text-align: center !important;
+}
+
+/* ===== ABOUT SECTION - WARNA KHUSUS ===== */
+.about-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--biru-about), #2ecc71);
+}
+
+.about-section .section-title {
+    color: white !important;
+    text-align: left !important;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, #ffffff, var(--kuning-about), #ffffff);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.about-section .section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--biru-about), #2ecc71);
+    bottom: -10px;
+    left: 0;
+    transform: none;
+    border-radius: 2px;
+}
+
+.about-section .section-title.text-start {
+    width: auto !important;
+}
+
+.about-image {
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: floatAbout 4s ease-in-out infinite;
+    max-height: 400px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+@keyframes floatAbout {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.about-image:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(52, 152, 219, 0.5);
+}
+
+/* Teks dalam about section */
+.about-section p.fw-bold.text-black {
+    color: var(--kuning-about) !important;
+    font-size: 1.3rem !important;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 4px solid var(--biru-about);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 1.5rem;
+}
+
+.about-section p:not(.fw-bold) {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Container untuk ikon */
+.icon-container {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid rgba(52, 152, 219, 0.3);
+    transition: all 0.4s ease;
+    margin-right: 15px;
+}
+
+/* Ikon dan item about - FIXED */
+.about-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--biru-about), #2ecc71);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.about-item:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(52, 152, 219, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.about-item:hover::before {
+    opacity: 1;
+}
+
+.about-item:hover .icon-container {
+    transform: rotate(10deg) scale(1.1);
+    background: rgba(52, 152, 219, 0.2);
+    border-color: var(--biru-about);
+}
+
+.about-item .icon-about {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: all 0.4s ease;
+    filter: none !important;
+}
+
+.about-item:hover .icon-about {
+    transform: scale(1.2);
+}
+
+.about-item span.fw-bold {
+    color: var(--kuning-about) !important;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    position: relative;
+}
+
+.about-item span.fw-bold::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: var(--biru-about);
+    bottom: -5px;
+    left: 0;
+    border-radius: 1px;
+}
+
+.about-item p.small {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+/* Tombol khusus about section */
+.about-section .btn-outline-primary {
+    color: var(--biru-about) !important;
+    border-color: var(--biru-about) !important;
+    background: transparent;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.about-section .btn-outline-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--biru-about), #2ecc71);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.about-section .btn-outline-primary:hover {
+    color: white !important;
+    border-color: var(--biru-about) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.about-section .btn-outline-primary:hover::before {
+    left: 0;
+}
+
+/* Efek partikel latar belakang about */
+.about-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(241, 196, 15, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Konten di atas efek latar belakang */
+.about-section .container {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== INFRASTRUKTUR & GEDUNG SECTIONS ===== */
@@ -314,7 +546,7 @@ section {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    background: linear-gradient(90deg, var(--hijau-cio), var(--info-color));
 }
 
 .service-card {
@@ -335,7 +567,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
+    background: linear-gradient(135deg, var(--hijau-cio) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 1;
@@ -343,7 +575,8 @@ section {
 
 .service-card:hover {
     transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(40, 167, 69, 0.1);
+    border-color: rgba(40, 167, 69, 0.2);
 }
 
 .service-card:hover::before {
@@ -353,7 +586,7 @@ section {
 .service-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+    background: linear-gradient(135deg, var(--hijau-cio), var(--info-color));
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -436,11 +669,13 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    border: 2px solid transparent;
 }
 
 .image-card:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(40, 167, 69, 0.2);
+    border-color: var(--hijau-cio);
 }
 
 .image-card img {
@@ -459,7 +694,7 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(40, 167, 69, 0.8), transparent);
     color: white;
     padding: 1rem;
     transform: translateY(100%);
@@ -470,35 +705,95 @@ section {
     transform: translateY(0);
 }
 
-/* ===== ABOUT SECTION ===== */
-.about-section {
+/* ===== DOCUMENTATION SECTION - CAROUSEL ===== */
+#documentation {
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
 }
 
-.about-image {
+#documentation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--hijau-cio), var(--info-color));
+}
+
+#documentation .carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#documentation .carousel-inner {
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.about-image:hover {
-    transform: scale(1.02);
+#documentation .carousel-item {
+    background: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.about-item {
-    transition: transform 0.3s ease;
-}
-
-.about-item:hover {
-    transform: translateX(10px);
-}
-
-.icon-about {
-    width: 50px;
-    height: 50px;
+#documentation .carousel-item img {
+    max-height: 500px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 15px;
     object-fit: contain;
-    flex-shrink: 0;
+}
+
+#documentation .carousel-control-prev,
+#documentation .carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background: rgba(40, 167, 69, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+#documentation .carousel-control-prev {
+    left: 20px;
+}
+
+#documentation .carousel-control-next {
+    right: 20px;
+}
+
+#documentation .carousel-control-prev:hover,
+#documentation .carousel-control-next:hover {
+    background: rgba(40, 167, 69, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#documentation .carousel-indicators {
+    bottom: -50px;
+}
+
+#documentation .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: var(--hijau-cio);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+#documentation .carousel-indicators button.active {
+    opacity: 1;
+    transform: scale(1.3);
 }
 
 /* ===== PROJECTS SECTION ===== */
@@ -511,7 +806,7 @@ section {
 
 .project-card-custom:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 20px 40px rgba(40, 167, 69, 0.15) !important;
 }
 
 .project-img {
@@ -529,16 +824,32 @@ section {
     padding: 1.5rem;
 }
 
+/* TOGGLE TEXT - WARNA HITAM */
+.toggle-text {
+    color: #000000 !important; /* Warna hitam */
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
 .toggle-project-btn {
     transition: all 0.3s ease;
+    background-color: var(--hijau-cio) !important;
+    border-color: var(--hijau-cio) !important;
 }
 
 .toggle-project-btn:hover {
     transform: translateY(-3px);
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.toggle-project-btn:hover .toggle-text {
+    color: white !important;
 }
 
 .toggle-icon {
     transition: transform 0.3s ease;
+    color: white;
 }
 
 .toggle-project-btn[aria-expanded="true"] .toggle-icon {
@@ -549,7 +860,7 @@ section {
 .ongoing-number {
     font-size: 3rem;
     font-weight: 800;
-    color: var(--primary-color);
+    color: var(--hijau-cio);
     opacity: 0.2;
     line-height: 1;
     min-width: 60px;
@@ -574,7 +885,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    background: linear-gradient(to top, rgba(40, 167, 69, 0.3), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -596,6 +907,7 @@ section {
     border-radius: 20px;
     border: none;
     animation: modalSlideIn 0.5s ease;
+    border-top: 5px solid var(--hijau-cio);
 }
 
 @keyframes modalSlideIn {
@@ -640,10 +952,11 @@ section {
     cursor: pointer;
     z-index: 9999;
     transition: all 0.3s ease;
+    border: 2px solid var(--hijau-cio);
 }
 
 .custom-close:hover {
-    background: var(--danger-color);
+    background: var(--hijau-cio);
     color: white;
     transform: rotate(90deg);
 }
@@ -662,11 +975,13 @@ section {
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.4s ease;
+    border: 2px solid #e9ecef;
 }
 
 .video-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(40, 167, 69, 0.15);
+    border-color: var(--hijau-cio);
 }
 
 .video-wrapper {
@@ -695,14 +1010,14 @@ section {
 }
 
 .title-accent {
-    color: var(--primary-color);
+    color: var(--hijau-cio);
     display: block;
 }
 
 .title-line-custom {
     width: 100px;
     height: 4px;
-    background: var(--primary-color);
+    background: var(--hijau-cio);
     margin: 1.5rem 0;
     border-radius: 2px;
 }
@@ -715,13 +1030,16 @@ section {
 
 /* ===== CAROUSEL IMPROVEMENTS ===== */
 .carousel-img-fixed-height {
-    height: 400px;
-    object-fit: cover;
+    height: 500px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    max-width: 90%;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(40, 167, 69, 0.8);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -731,7 +1049,7 @@ section {
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
-    background-color: rgba(0, 123, 255, 0.8);
+    background-color: rgba(40, 167, 69, 1);
     transform: scale(1.1);
 }
 
@@ -744,44 +1062,245 @@ section {
 }
 
 .carousel-indicators button.active {
-    background-color: var(--primary-color);
+    background-color: var(--hijau-cio);
     transform: scale(1.3);
 }
 
-/* ===== CONTACT SECTION ===== */
+/* ===== BUTTON STYLES ===== */
+.btn-primary {
+    background-color: var(--hijau-cio) !important;
+    border-color: var(--hijau-cio) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--hijau-cio) !important;
+    border-color: var(--hijau-cio) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--hijau-cio) !important;
+    color: white !important;
+}
+
+/* ===== IMPROVED CONTACT SECTION - SEJAJAR ===== */
+.contact-section {
+    padding: 5rem 0 !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--hijau-cio), var(--info-color));
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-section .row {
+    display: flex;
+    align-items: stretch;
+    min-height: 600px;
+}
+
+.contact-section .col-lg-6 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Kontak Info - Bagian Kiri */
+.contact-info {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(40, 167, 69, 0.1);
+    border-right: 5px solid var(--hijau-cio);
+}
+
+.contact-info .section-title {
+    text-align: left !important;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.contact-info .section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: var(--hijau-cio);
+    bottom: -10px;
+    left: 0;
+    transform: none;
+    border-radius: 2px;
+}
+
+.contact-info > p {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    text-align: justify;
+}
+
+/* Contact Details */
+.contact-details {
+    margin-top: auto;
+}
+
 .contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    margin-bottom: 1.8rem;
+    padding: 1.2rem;
+    background: rgba(40, 167, 69, 0.03);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(40, 167, 69, 0.1);
 }
 
 .contact-item:hover {
-    transform: translateY(-5px);
+    transform: translateX(5px);
+    background: rgba(40, 167, 69, 0.08);
+    border-color: rgba(40, 167, 69, 0.3);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.1);
 }
 
 .contact-item i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-right: 1rem;
+    font-size: 1.4rem;
+    color: var(--hijau-cio);
+    margin-right: 1.2rem;
     margin-top: 0.3rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.contact-item div {
+    flex: 1;
+}
+
+.contact-item h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.contact-item p {
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Contact Form - Bagian Kanan */
+.contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(40, 167, 69, 0.1);
+    border-left: 5px solid var(--info-color);
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.contact-form h3::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: var(--info-color);
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+}
+
+.contact-form form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form .form-control {
-    padding: 1rem;
+    padding: 1rem 1.2rem;
     border: 2px solid #e9ecef;
     border-radius: 10px;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .contact-form .form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.15);
+    border-color: var(--hijau-cio);
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.15);
     transform: translateY(-2px);
+}
+
+.contact-form select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+}
+
+.contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button[type="submit"] {
+    background-color: var(--hijau-cio) !important;
+    border-color: var(--hijau-cio) !important;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.2);
 }
 
 /* ===== IMPROVED FOOTER ===== */
@@ -789,6 +1308,7 @@ section {
     background: var(--dark-color);
     color: white;
     padding: 4rem 0 2rem;
+    border-top: 5px solid var(--hijau-cio);
 }
 
 .footer-logo {
@@ -821,7 +1341,7 @@ section {
 }
 
 .social-links a:hover {
-    background: var(--primary-color);
+    background: var(--hijau-cio);
     transform: translateY(-3px);
 }
 
@@ -842,7 +1362,7 @@ section {
     bottom: 0;
     width: 40px;
     height: 2px;
-    background: var(--primary-color);
+    background: var(--hijau-cio);
 }
 
 .footer-links ul {
@@ -861,7 +1381,7 @@ section {
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--hijau-cio);
     padding-left: 5px;
 }
 
@@ -875,7 +1395,7 @@ section {
 
 .footer-contact i {
     margin-right: 1rem;
-    color: var(--primary-color);
+    color: var(--hijau-cio);
     margin-top: 0.2rem;
     min-width: 20px;
 }
@@ -896,6 +1416,54 @@ section {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--hijau-cio);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1200px) {
     .hero-title {
@@ -904,6 +1472,18 @@ section {
     
     .section-title {
         font-size: 2.2rem;
+    }
+    
+    .about-section .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .carousel-img-fixed-height {
+        height: 450px;
+    }
+    
+    .contact-section .row {
+        min-height: 550px;
     }
 }
 
@@ -934,6 +1514,67 @@ section {
     .footer-contact h4::after {
         left: 50%;
         transform: translateX(-50%);
+    }
+    
+    .about-section .section-title {
+        font-size: 2.2rem;
+        text-align: center !important;
+    }
+    
+    .about-section .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .about-image {
+        margin-bottom: 2rem;
+        max-height: 350px;
+    }
+    
+    .about-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .icon-container {
+        width: 60px;
+        height: 60px;
+        padding: 12px;
+    }
+    
+    .about-item .icon-about {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .carousel-img-fixed-height {
+        height: 400px;
+    }
+    
+    #documentation .carousel-item {
+        min-height: 400px;
+    }
+    
+    #documentation .carousel-item img {
+        max-height: 400px;
+    }
+    
+    /* Contact Section Responsive */
+    .contact-section .row {
+        min-height: auto;
+        flex-direction: column;
+    }
+    
+    .contact-section .col-lg-6 {
+        margin-bottom: 2rem;
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 2rem;
+    }
+    
+    .contact-info .section-title {
+        font-size: 1.8rem;
     }
 }
 
@@ -977,6 +1618,77 @@ section {
     .social-links {
         justify-content: center;
     }
+    
+    .about-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .about-section p.fw-bold.text-black {
+        font-size: 1.1rem !important;
+    }
+    
+    .about-item {
+        padding: 1.2rem;
+    }
+    
+    .icon-container {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        margin-right: 12px;
+    }
+    
+    .about-item .icon-about {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carousel-img-fixed-height {
+        height: 350px;
+        max-width: 95%;
+    }
+    
+    #documentation .carousel-control-prev,
+    #documentation .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+    
+    #documentation .carousel-control-prev {
+        left: 10px;
+    }
+    
+    #documentation .carousel-control-next {
+        right: 10px;
+    }
+    
+    #documentation .carousel-item {
+        min-height: 350px;
+        padding: 15px;
+    }
+    
+    #documentation .carousel-item img {
+        max-height: 350px;
+    }
+    
+    /* Contact Section Responsive */
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .contact-info .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .contact-form h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+        margin-bottom: 1.2rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1005,59 +1717,124 @@ section {
         font-size: 1.5rem;
     }
     
-    .contact-item {
-        padding: 1rem;
-    }
-    
     .footer {
         padding: 3rem 0 1.5rem;
     }
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
+    
+    .about-section .section-title {
+        font-size: 1.8rem;
     }
-    50% {
-        transform: translateY(-10px);
+    
+    .about-section p:not(.fw-bold) {
+        font-size: 1rem;
+    }
+    
+    .about-item span.fw-bold {
+        font-size: 1.1rem;
+    }
+    
+    .about-item p.small {
+        font-size: 0.9rem !important;
+    }
+    
+    .icon-container {
+        width: 45px;
+        height: 45px;
+        padding: 8px;
+        margin-right: 10px;
+    }
+    
+    .about-item .icon-about {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .about-image {
+        max-height: 300px;
+        padding: 15px;
+    }
+    
+    .carousel-img-fixed-height {
+        height: 300px;
+        max-width: 100%;
+    }
+    
+    #documentation .carousel-item {
+        min-height: 300px;
+        padding: 10px;
+    }
+    
+    #documentation .carousel-item img {
+        max-height: 300px;
+    }
+    
+    #documentation .carousel-control-prev,
+    #documentation .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #documentation .carousel-control-prev-icon,
+    #documentation .carousel-control-next-icon {
+        width: 40px;
+        height: 40px;
+        background-size: 20px 20px;
+    }
+    
+    /* Contact Section Responsive */
+    .contact-info,
+    .contact-form {
+        padding: 1.2rem;
+        border-radius: 15px;
+    }
+    
+    .contact-info .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .contact-form h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.8rem 1rem;
+    }
+    
+    .contact-item {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-item i {
+        font-size: 1.2rem;
+        margin-right: 0.8rem;
     }
 }
 
-.floating {
-    animation: float 3s ease-in-out infinite;
+/* ===== FIX FOR IMAGE DISPLAY ===== */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
-/* ===== LOADING ANIMATIONS ===== */
-.fade-in {
-    animation: fadeIn 0.8s ease forwards;
+.about-item img {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.icon-about {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* ===== CUSTOM SCROLLBAR ===== */
-::-webkit-scrollbar {
-    width: 10px;
+/* ===== CENTER CAROUSEL IMAGES ===== */
+.carousel-item.text-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0056b3;
+.carousel-item.text-center img {
+    margin: 0 auto;
 }
