@@ -125,7 +125,7 @@ body {
     height: 100vh;
     min-height: 600px;
     object-fit: cover;
-    filter: brightness(0.8);
+    filter: brightness(1.1);
     transition: transform 10s ease;
 }
 
@@ -155,15 +155,10 @@ body {
 }
 
 .hero-content {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    background: transparent !important;
+    backdrop-filter: none;
     padding: 3rem;
-    border-radius: 15px;
-    max-width: 700px;
-    margin: 0;
-    text-align: left;
-    border-left: 5px solid var(--hijau-cio);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
 }
 
 .hero-title {
@@ -1797,9 +1792,13 @@ section {
     
     /* Mobile Controls Adjustments */
     .carousel-caption {
-        padding-left: 10px;
-        padding-right: 10px;
-        align-items: flex-start !important;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: auto; /* matikan tengah */
+        padding-left: 5%;
+        padding-bottom: 5%;
+        text-align: left;
     }
     
     .carousel-controls-mobile {
