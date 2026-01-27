@@ -630,6 +630,20 @@ section {
     border: 1px solid #e9ecef;
     position: relative;
     overflow: hidden;
+
+    /* BACKGROUND IMAGE */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 260px;
+    color: white;
+
+    /* TENGAHKAN ICON & TEKS */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* tengah vertikal */
+    align-items: center;     /* tengah horizontal */
 }
 
 .service-card::before {
@@ -677,20 +691,28 @@ section {
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 800; /* TEBAL */
     margin-bottom: 1rem;
-    color: var(--dark-color);
+    color: #ffffff !important;
     position: relative;
     z-index: 2;
 }
 
 .service-card p {
-    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 600; /* TEBAL DESKRIPSI */
+    color: rgba(255, 255, 255, 0.95) !important;
     margin-bottom: 0;
     position: relative;
     z-index: 2;
 }
+
+.service-card i {
+    font-weight: 900;
+    color: #ffffff !important;
+}
+
 
 /* ===== SERVICES SECTION CENTERED ===== */
 .services-section .section-header {
