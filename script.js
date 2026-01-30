@@ -54,6 +54,60 @@ window.addEventListener('scroll', function() {
     lastScrollTop = scrollTop;
 });
 
+// Marquee drag to scroll functionality
+const slider = document.querySelector('.marquee-container');
+if (slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Also add touch support for mobile
+    slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('touchend', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
+
 // Portfolio gallery hover effect
 const imageCards = document.querySelectorAll('.image-card');
 imageCards.forEach(card => {
@@ -68,16 +122,18 @@ imageCards.forEach(card => {
 
 // Image modal functionality
 const projectImages = document.querySelectorAll('.project-img');
-const modalImage = document.getElementById('modalImage');
-const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+if (projectImages.length > 0) {
+    const modalImage = document.getElementById('modalImage');
+    const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
-projectImages.forEach(img => {
-    img.addEventListener('click', function() {
-        modalImage.src = this.src;
-        modalImage.alt = this.alt;
-        imageModal.show();
+    projectImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+            imageModal.show();
+        });
     });
-});
+}
 
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
@@ -158,7 +214,10 @@ if (partnerToggleButton) {
 // Enhanced carousel auto-play with pause on hover
 const carousels = document.querySelectorAll('.carousel');
 carousels.forEach(carousel => {
-    const carouselInstance = new bootstrap.Carousel(carousel);
+    const carouselInstance = new bootstrap.Carousel(carousel, {
+        interval: 5000,
+        wrap: true
+    });
     
     // Pause on hover
     carousel.addEventListener('mouseenter', () => {
@@ -166,6 +225,15 @@ carousels.forEach(carousel => {
     });
     
     carousel.addEventListener('mouseleave', () => {
+        carouselInstance.cycle();
+    });
+
+    // Pause on focus (for accessibility)
+    carousel.addEventListener('focusin', () => {
+        carouselInstance.pause();
+    });
+
+    carousel.addEventListener('focusout', () => {
         carouselInstance.cycle();
     });
 });
@@ -185,38 +253,42 @@ window.addEventListener('scroll', function() {
 
 // Lazy loading for images
 const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src || img.src;
-            img.classList.add('loaded');
-            observer.unobserve(img);
-        }
+if (lazyImages.length > 0) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src || img.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px 0px',
+        threshold: 0.1
     });
-}, {
-    rootMargin: '50px 0px',
-    threshold: 0.1
-});
 
-lazyImages.forEach(img => imageObserver.observe(img));
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
 
 // Service cards animation on scroll
 const serviceCards = document.querySelectorAll('.service-card');
-const cardObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.classList.add('fade-in');
-            }, index * 100);
-            observer.unobserve(entry.target);
-        }
+if (serviceCards.length > 0) {
+    const cardObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('fade-in');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
     });
-}, {
-    threshold: 0.1
-});
 
-serviceCards.forEach(card => cardObserver.observe(card));
+    serviceCards.forEach(card => cardObserver.observe(card));
+}
 
 // Active nav link based on scroll position
 const sections = document.querySelectorAll('section');
@@ -252,6 +324,11 @@ videos.forEach(video => {
     
     video.addEventListener('mouseleave', function() {
         this.pause();
+        this.currentTime = 0;
+    });
+
+    // Also pause when video ends
+    video.addEventListener('ended', function() {
         this.currentTime = 0;
     });
 });
@@ -300,12 +377,25 @@ backToTop.style.width = '50px';
 backToTop.style.height = '50px';
 backToTop.style.borderRadius = '50%';
 backToTop.style.fontSize = '1.2rem';
-backToTop.style.boxShadow = '0 5px 15px rgba(0, 123, 255, 0.3)';
+backToTop.style.boxShadow = '0 5px 15px rgba(40, 167, 69, 0.3)';
+backToTop.style.backgroundColor = 'var(--hijau-cio)';
+backToTop.style.borderColor = 'var(--hijau-cio)';
+backToTop.style.transition = 'all 0.3s ease';
 
 document.body.appendChild(backToTop);
 
 backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+backToTop.addEventListener('mouseenter', () => {
+    backToTop.style.transform = 'translateY(-3px)';
+    backToTop.style.boxShadow = '0 8px 20px rgba(40, 167, 69, 0.4)';
+});
+
+backToTop.addEventListener('mouseleave', () => {
+    backToTop.style.transform = 'translateY(0)';
+    backToTop.style.boxShadow = '0 5px 15px rgba(40, 167, 69, 0.3)';
 });
 
 window.addEventListener('scroll', () => {
@@ -347,10 +437,47 @@ const preloaderHTML = `
     z-index: 9999;
     transition: opacity 0.5s ease;
 ">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+    <div class="spinner-border" style="width: 3rem; height: 3rem; color: var(--hijau-cio);" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
 `;
 
-document.body.insertAdjacentHTML('afterbegin', preloaderHTML);
+// Only add preloader if it doesn't exist
+if (!document.querySelector('.preloader')) {
+    document.body.insertAdjacentHTML('afterbegin', preloaderHTML);
+}
+
+// Marquee auto-scroll control
+const marqueeContent = document.querySelector('.marquee-content');
+if (marqueeContent) {
+    // Pause animation on hover
+    marqueeContent.addEventListener('mouseenter', () => {
+        marqueeContent.style.animationPlayState = 'paused';
+    });
+
+    marqueeContent.addEventListener('mouseleave', () => {
+        marqueeContent.style.animationPlayState = 'running';
+    });
+
+    // Also handle touch events for mobile
+    marqueeContent.addEventListener('touchstart', () => {
+        marqueeContent.style.animationPlayState = 'paused';
+    });
+
+    marqueeContent.addEventListener('touchend', () => {
+        marqueeContent.style.animationPlayState = 'running';
+    });
+}
+
+// Initialize Bootstrap tooltips
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+// Initialize Bootstrap popovers
+const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+});

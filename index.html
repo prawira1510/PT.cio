@@ -25,50 +25,68 @@
 
 <body>
     <!-- Header & Navigation -->
-    <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-1"> 
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
-                <img src="img/logo_pt-cio.png" alt="Logo PT CIO" class="logo me-2">
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sosial Media
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://www.youtube.com/@ciocreatorandcommunication" target="_blank"><i class="fab fa-youtube me-2"></i>YouTube</a></li>
-                            <li><a class="dropdown-item" href="https://www.tiktok.com/@pt.ciocreatedevelopment?_t=ZS-90q949QoPkQ&_r=1" target="_blank"><i class="fab fa-tiktok me-2"></i>TikTok</a></li>
-                            <li><a class="dropdown-item" href="https://www.instagram.com/pt.cipta.infra.optima?igsh=NG82enljaTNkN2Iz" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
-                            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61582744774187" target="_blank"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Tentang PT CIO</a></li>
-                    
-                    <!-- Menu Dropdown Pekerjaan -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pekerjaan
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#infrastruktur-section">Pekerjaan Infrastruktur</a></li>
-                            <li><a class="dropdown-item" href="#gedung-section">Pekerjaan Gedung</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="nav-item"><a class="nav-link" href="#projects">Pengalaman Proyek</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
-                </ul>
-            </div>
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-1"> 
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
+            <img src="img/logo_pt-cio.png" alt="Logo PT CIO" class="logo me-2">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <!-- Beranda -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Beranda</a>
+                </li>
+
+                <!-- Tentang -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Tentang PT CIO</a>
+                </li>
+
+                <!-- Pengalaman Proyek -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Pengalaman Proyek</a>
+                </li>
+
+                <!-- Pekerjaan Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Pekerjaan <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#infrastruktur-section">Pekerjaan Infrastruktur</a></li>
+                        <li><a class="dropdown-item" href="#gedung-section">Pekerjaan Gedung</a></li>
+                    </ul>
+                </li>
+
+                <!-- Sosial Media Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Sosial Media <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://www.youtube.com/@ciocreatorandcommunication" target="_blank"><i class="fab fa-youtube me-2"></i>YouTube</a></li>
+                        <li><a class="dropdown-item" href="https://www.tiktok.com/@pt.ciocreatedevelopment?_t=ZS-90q949QoPkQ&_r=1" target="_blank"><i class="fab fa-tiktok me-2"></i>TikTok</a></li>
+                        <li><a class="dropdown-item" href="https://www.instagram.com/pt.cipta.infra.optima" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
+                        <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61582744774187" target="_blank"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
+                    </ul>
+                </li>
+
+                <!-- Kontak -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Kontak</a>
+                </li>
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 </header>
 
 <!-- Hero Section with Carousel -->
@@ -314,26 +332,58 @@
 
         <div class="marquee-container">
             <div class="marquee-content">
+                <!-- SET 1 -->
                 <div class="image-card">
-                    <img src="img/BSM1(BARU).jpg" alt="Proyek Jembatan" onerror="this.onerror=null; this.src='https://placehold.co/300x200/4c4c4c/ffffff?text=Gagal+Muat'">
-                    <div class="caption">Billiard Spin Master</div>
+                    <img src="img/BSM1(BARU).jpg">
+                    <div class="caption">Billiard Spin Master - Bandung</div>
                 </div>
                 <div class="image-card">
-                    <img src="img/MG LOGO.jpg" alt="Pusat Data Baru" onerror="this.onerror=null; this.src='https://placehold.co/300x200/5e5e5e/ffffff?text=Gagal+Muat'">
-                    <div class="caption">Marketing Gallery</div>
+                    <img src="img/MG LOGO.jpg">
+                    <div class="caption">Marketing Gallery - Bogor</div>
                 </div>
                 <div class="image-card">
-                    <img src="img/perumahan OCBD.jpeg" alt="Perumahan Modern" onerror="this.onerror=null; this.src='https://placehold.co/300x200/6f6f6f/ffffff?text=Gagal+Muat'">
-                    <div class="caption">Perumahan di OCBD</div>
+                    <img src="img/perumahan OCBD.jpeg">
+                    <div class="caption">Perumahan di OCBD - Bogor</div>
                 </div>
                 <div class="image-card">
-                    <img src="img/mcd 3.jpeg" alt="Jalan Tol Baru" onerror="this.onerror=null; this.src='https://placehold.co/300x200/808080/ffffff?text=Gagal+Muat'">
-                    <div class="caption">Masjid Cimanggis</div>
+                    <img src="img/mcd 3.jpeg">
+                    <div class="caption">Masjid Cimanggis - Depok</div>
                 </div>
                 <div class="image-card">
-                    <img src="https://placehold.co/300x200/919191/ffffff?text=Proyek+5" alt="Pelabuhan Laut" onerror="this.onerror=null; this.src='https://placehold.co/300x200/919191/ffffff?text=Gagal+Muat'">
-                    <div class="caption">Modernisasi Pelabuhan</div>
+                    <img src="img/perbaikan jalan.jpeg">
+                    <div class="caption">Perbaikan Jalan 6 Lokasi - Tanggerang</div>
                 </div>
+                <div class="image-card">
+                    <img src="img/inspeksi jalan.jpeg">
+                    <div class="caption">Inspeksi Jalan Antasari - Cilandak</div>
+                </div>
+
+                <!-- DUPLIKAT SET UNTUK LOOP -->
+                <div class="image-card">
+                    <img src="img/BSM1(BARU).jpg">
+                    <div class="caption">Billiard Spin Master - Bandung</div>
+                </div>
+                <div class="image-card">
+                    <img src="img/MG LOGO.jpg">
+                    <div class="caption">Marketing Gallery - Bogor</div>
+                </div>
+                <div class="image-card">
+                    <img src="img/perumahan OCBD.jpeg">
+                    <div class="caption">Perumahan di OCBD - Bogor</div>
+                </div>
+                <div class="image-card">
+                    <img src="img/mcd 3.jpeg">
+                    <div class="caption">Masjid Cimanggis - Depok</div>
+                </div>
+                <div class="image-card">
+                    <img src="img/perbaikan jalan.jpeg">
+                    <div class="caption">Perbaikan Jalan 6 Lokasi - Tanggerang</div>
+                </div>
+                <div class="image-card">
+                    <img src="img/inspeksi jalan.jpeg">
+                    <div class="caption">Inspeksi Jalan Antasari - Cilandak</div>
+                </div>
+
             </div>
         </div>
     </section>
